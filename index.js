@@ -14,9 +14,10 @@ module.exports = function container_plugin(md, name, options) {
   function renderDefault(tokens, idx, _options, env, slf) {
 
     // add a class to the opening tag
-    if (tokens[idx].nesting === 1) {
-      tokens[idx].attrJoin('class', name);
-    }
+    // Don't add class to opening tag
+    // if (tokens[idx].nesting === 1) {
+    //   tokens[idx].attrJoin('class', name);
+    // }
 
     return slf.renderToken(tokens, idx, _options, env, slf);
   }
@@ -56,7 +57,9 @@ module.exports = function container_plugin(md, name, options) {
 
     markup = state.src.slice(start, pos);
     params = state.src.slice(pos, max);
-    if (!validate(params, markup)) { return false; }
+
+    // Don't validate
+    // if (!validate(params, markup)) { return false; }
 
     // Since start is found, we can report success here in validation mode
     //
