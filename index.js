@@ -122,6 +122,7 @@ module.exports = function container_plugin(md, name, options) {
     state.lineMax = nextLine;
 
     token        = state.push('container_' + name + '_open', 'div', 1);
+    token.attrJoin('class', params.trim().split(' ', 2)[0]);
     token.markup = markup;
     token.block  = true;
     token.info   = params;
